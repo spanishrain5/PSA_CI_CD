@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Home";
+
+    // http://mybooks.runasp.net/
+}
+
+
+<div class="text-center center-container">
+
+    <h1 class="display-1">Books</h1>
+    
+    <br/>
+
+    @using (Html.BeginForm("Search", "Home", FormMethod.Get))
+    {
+        <input type="text" name="query" placeholder="Search..." />
+        <button type="submit">Search</button>
+    }
+</div>
+
+<style>
+    .center-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 80vh; /* 80% of the viewport height */
+    }
+</style>

@@ -1,0 +1,32 @@
+﻿@model PSA_1uzd.Persistence.Models.Review
+
+<h2>Submit a Review</h2>
+
+<form asp-action="SubmitReview" method="post">
+    <input type="hidden" asp-for="BookId" />
+    <input type="hidden" asp-for="Keyword" />
+
+    <div class="form-group">
+        <label asp-for="ReviewerName"></label>
+        <input asp-for="ReviewerName" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Comment"></label>
+        <textarea asp-for="Comment" class="form-control"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Rating"></label>
+        <select asp-for="Rating" class="form-control">
+            <option value="1">1 ⭐</option>
+            <option value="2">2 ⭐</option>
+            <option value="3">3 ⭐</option>
+            <option value="4">4 ⭐</option>
+            <option value="5">5 ⭐</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit Review</button>
+</form>
+

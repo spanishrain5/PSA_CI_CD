@@ -1,0 +1,30 @@
+﻿@model List<(string Name, string ImageUrl, string Url)>
+
+<h2>Playlists for "@ViewBag.Genre"</h2>
+
+@if (ViewBag.NoPlaylistsFound == true)
+{
+    <div class="alert alert-warning">
+        No playlists found for this genre.
+    </div>
+}
+else
+{
+    <div class="row">
+        @foreach (var playlist in Model)
+        {
+            <div class="col-md-4">
+                <div class="card mb-3">
+                    <img class="card-img-top" src="@playlist.ImageUrl" alt="@playlist.Name" />
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a href="@playlist.Url" target="_blank">@playlist.Name</a>
+                        </h5>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+
+<a asp-action="Index" class="btn btn-secondary">Back to Search</a>

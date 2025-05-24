@@ -1,0 +1,40 @@
+﻿@model List<PSA_1uzd.Persistence.Models.BookResult>
+
+<h2 class="mb-4">Search Results</h2>
+        @foreach (var book in Model)
+        {
+            <div class="card mb-3">
+                <div class="card-body">
+                    <p class="mb-1">@book.Genre</p>
+                    <h4>@book.Title - <span class="text-secondary">@book.Author</span></h4>
+
+                    <a asp-action="AddReview" asp-route-bookId="@book.ID" asp-route-keyword="@ViewBag.Keyword" class="btn btn-sm btn-success mb-2">
+                        Add Review
+                    </a>
+
+                    <a asp-action="FindPlaylists" asp-route-genre="@book.Genre" class="btn btn-sm btn-primary mb-2">
+                        Find Playlists
+                    </a>
+
+                    @if (book.Reviews != null && book.Reviews.Any())
+                    {
+                        var averageRating = book.Reviews.Average(r => r.Rating);
+                        <p>@averageRating.ToString("0.0") ⭐</p>
+
+                        <ul class="list-group list-group-flush">
+                            @foreach (var review in book.Reviews)
+                            {
+                                <li class="list-group-item">
+                                    <strong>@review.ReviewerName</strong>: @review.Comment (@review.Rating ⭐)
+                                </li>
+                            }
+                        </ul>
+                    }
+                    else
+                    {
+                        <p>No reviews yet.</p>
+                    }
+                </div>
+            </div>
+        }
+

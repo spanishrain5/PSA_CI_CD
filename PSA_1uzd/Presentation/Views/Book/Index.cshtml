@@ -1,0 +1,20 @@
+﻿@model List<BooksAuthorsGenres>;
+
+@{
+    ViewData["Title"] = "Books";
+}
+
+<div style="margin-top:50px">
+
+    <h4>My Books</h4>
+
+    <ul>
+        @foreach (var book in @Model)
+        {
+            <li>
+                @book.Author - @book.Title
+            </li>
+        }
+    </ul>
+
+</div>
