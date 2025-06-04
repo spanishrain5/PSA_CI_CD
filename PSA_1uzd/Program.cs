@@ -20,13 +20,13 @@ builder.Services.AddHttpClient(); // microservice as external API
 
 builder.Services.AddHttpClient("SearchService", client =>
 {
-    client.BaseAddress = new Uri("https://searchservice20250524190932.azurewebsites.net/");
+    client.BaseAddress = new Uri(builder.Configuration["ServiceUrls:Search"]);
     //client.BaseAddress = new Uri("http://mybookssearch.runasp.net/");
 });
 
 builder.Services.AddHttpClient("ReviewService", client =>
 {
-    client.BaseAddress = new Uri("https://reviewsservice20250524183901.azurewebsites.net/");
+    client.BaseAddress = new Uri(builder.Configuration["ServiceUrls:Reviews"]);
     //client.BaseAddress = new Uri("http://mybooksreviews.runasp.net/");
 });
 
